@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeWorkController extends AbstractController
@@ -24,6 +24,7 @@ class HomeWorkController extends AbstractController
             'id' => $page !== self::DEFAULT_PAGE ? $page * self::LIMIT_PER_PAGE + random_int(0, self::LIMIT_PER_PAGE - 1) :
             $page + random_int(0, self::LIMIT_PER_PAGE - 1),
         ]);
+
         return $this->render('home_work/index.html.twig', [
             'page' => $page,
             'route' => $showHomeworkUrl,
