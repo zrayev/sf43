@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Page № {{ page }}</h1>
+    <h4> <a href="{{ path('homework_validation', {'word': random(['learn', 'follow', 'doing'])}) }}">Press it!</a></h4>
+    <p>Get random homework: <a href="{{ route }}">{{ absolute_url(route) }}</a></p>
+</div>
+{% endblock %}

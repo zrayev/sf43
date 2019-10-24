@@ -1,0 +1,5 @@
+homework_validation:
+    path: /validation/{word}
+    controller: App\Controller\HomeWorkController::validation
+    requirements:
+        word: '[a-z]+'
