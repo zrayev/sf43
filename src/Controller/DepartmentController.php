@@ -92,19 +92,16 @@ class DepartmentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="department_delete", methods={"DELETE"})
-     * @param Request $request
+     * @Route("/{id}/delete", name="department_delete", methods={"GET"})
      * @param Department $department
      *
      * @return Response
      */
-    public function delete(Request $request, Department $department): Response
+    public function delete(Department $department): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$department->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($department);
-            $entityManager->flush();
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($department);
+        $entityManager->flush();
 
         return $this->redirectToRoute('department_index');
     }

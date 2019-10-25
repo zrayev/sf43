@@ -92,19 +92,16 @@ class ProjectController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_delete", methods={"DELETE"})
-     * @param Request $request
+     * @Route("/{id}/delete", name="project_delete", methods={"GET"})
      * @param Project $project
      *
      * @return Response
      */
-    public function delete(Request $request, Project $project): Response
+    public function delete(Project $project): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($project);
-            $entityManager->flush();
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($project);
+        $entityManager->flush();
 
         return $this->redirectToRoute('project_index');
     }

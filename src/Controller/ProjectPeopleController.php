@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/project/people")
+ * @Route("/project-people")
  */
 class ProjectPeopleController extends AbstractController
 {
@@ -92,19 +92,16 @@ class ProjectPeopleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="project_people_delete", methods={"DELETE"})
-     * @param Request $request
+     * @Route("/{id}/delete", name="project_people_delete", methods={"GET"})
      * @param ProjectPeople $projectPerson
      *
      * @return Response
      */
-    public function delete(Request $request, ProjectPeople $projectPerson): Response
+    public function delete(ProjectPeople $projectPerson): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$projectPerson->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($projectPerson);
-            $entityManager->flush();
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($projectPerson);
+        $entityManager->flush();
 
         return $this->redirectToRoute('project_people_index');
     }

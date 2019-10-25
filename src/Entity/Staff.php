@@ -23,7 +23,7 @@ class Staff
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $FullName;
+    private $fullName;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -70,12 +70,12 @@ class Staff
 
     public function getFullName(): ?string
     {
-        return $this->FullName;
+        return $this->fullName;
     }
 
-    public function setFullName(string $FullName): self
+    public function setFullName(string $fullName): self
     {
-        $this->FullName = $FullName;
+        $this->fullName = $fullName;
 
         return $this;
     }

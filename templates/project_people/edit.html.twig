@@ -8,6 +8,5 @@
     {{ include('project_people/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('project_people_index') }}">back to list</a>
-
-    {{ include('project_people/_delete_form.html.twig') }}
+    <a href="{{ path('project_people_delete', {'id': project_person.id}) }}">delete</a>
 {% endblock %}
