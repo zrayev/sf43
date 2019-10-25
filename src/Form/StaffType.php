@@ -15,7 +15,6 @@ class StaffType extends AbstractType
             ->add('FullName')
             ->add('email')
             ->add('phone')
-            ->add('createdAt')
             ->add('skills')
             ->add('comments')
             ->add('departments')
