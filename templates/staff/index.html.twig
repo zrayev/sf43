@@ -13,7 +13,6 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>CreatedAt</th>
-                <th>Skills</th>
                 <th>Comments</th>
                 <th>actions</th>
             </tr>
@@ -22,11 +21,10 @@
         {% for staff in staff %}
             <tr>
                 <td>{{ staff.id }}</td>
-                <td>{{ staff.FullName }}</td>
+                <td>{{ staff.fullName }}</td>
                 <td>{{ staff.email }}</td>
                 <td>{{ staff.phone }}</td>
                 <td>{{ staff.createdAt ? staff.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ staff.skills }}</td>
                 <td>{{ staff.comments }}</td>
                 <td>
                     <a href="{{ path('staff_show', {'id': staff.id}) }}">show</a>

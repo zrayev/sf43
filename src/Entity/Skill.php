@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="department")
+ * @ORM\Table(name="skill")
  */
-class Department
+class Skill
 {
     /**
      * @ORM\Id()
@@ -25,25 +25,7 @@ class Department
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=1024)
-     */
-    private $description;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $teamLead;
-
-    /**
-     * @var Company
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="departments")
-     * @ORM\JoinColumn(onDelete="CASCADE")
-     */
-    private $company;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Staff", mappedBy="departments")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Staff", mappedBy="skills", cascade={"persist"})
      */
     private $people;
 
@@ -69,30 +51,6 @@ class Department
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    public function getCompany(): ?Company
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?Company $company): self
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Staff[]
      */
@@ -105,7 +63,7 @@ class Department
     {
         if (!$this->people->contains($person)) {
             $this->people[] = $person;
-            $person->addDepartment($this);
+            $person->addSkill($this);
         }
 
         return $this;
@@ -115,20 +73,8 @@ class Department
     {
         if ($this->people->contains($person)) {
             $this->people->removeElement($person);
-            $person->removeDepartment($this);
+            $person->removeSkill($this);
         }
-
-        return $this;
-    }
-
-    public function getTeamLead(): ?string
-    {
-        return $this->teamLead;
-    }
-
-    public function setTeamLead(string $teamLead): self
-    {
-        $this->teamLead = $teamLead;
 
         return $this;
     }

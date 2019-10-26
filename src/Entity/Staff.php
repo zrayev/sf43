@@ -43,7 +43,8 @@ class Staff
     private $createdAt;
 
     /**
-     * @ORM\Column(type="string", length=1024)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Skill", inversedBy="people")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $skills;
 
@@ -53,14 +54,21 @@ class Staff
     private $comments;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Department",inversedBy="people")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Department", inversedBy="people")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $departments;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ProjectPeople", mappedBy="person", cascade={"persist"})
+     */
+    private $projectPeople;
+
     public function __construct()
     {
+        $this->skills = new ArrayCollection();
         $this->departments = new ArrayCollection();
+        $this->projectPeople = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,14 +117,9 @@ class Staff
         return $this->createdAt;
     }
 
-    public function getSkills(): ?string
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        return $this->skills;
-    }
-
-    public function setSkills(string $skills): self
-    {
-        $this->skills = $skills;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -129,6 +132,32 @@ class Staff
     public function setComments(string $comments): self
     {
         $this->comments = $comments;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->contains($skill)) {
+            $this->skills->removeElement($skill);
+        }
 
         return $this;
     }
@@ -155,6 +184,44 @@ class Staff
         if ($this->departments->contains($department)) {
             $this->departments->removeElement($department);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ProjectPeople[]
+     */
+    public function getProjectPeople(): Collection
+    {
+        return $this->projectPeople;
+    }
+
+    public function addProjectPerson(ProjectPeople $projectPerson): self
+    {
+        if (!$this->projectPeople->contains($projectPerson)) {
+            $this->projectPeople[] = $projectPerson;
+            $projectPerson->setPerson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjectPerson(ProjectPeople $projectPerson): self
+    {
+        if ($this->projectPeople->contains($projectPerson)) {
+            $this->projectPeople->removeElement($projectPerson);
+            // set the owning side to null (unless already changed)
+            if ($projectPerson->getPerson() === $this) {
+                $projectPerson->setPerson(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function setSkills(?ProjectPeople $skills): self
+    {
+        $this->skills = $skills;
 
         return $this;
     }
