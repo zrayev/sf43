@@ -3,11 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="projectPeople")
  */
 class ProjectPeople
@@ -27,13 +26,13 @@ class ProjectPeople
     /**
      * @ORM\Column(type="string", length=1024)
      */
-    private  $responsibility;
+    private $responsibility;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="people")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
-    private  $project;
+    private $project;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Staff", inversedBy="projectPeople")

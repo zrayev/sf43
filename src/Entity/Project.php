@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity()
  * @ORM\Table(name="project")
  */
 class Project
@@ -98,5 +98,4 @@ class Project
 
         return $this;
     }
-
 }

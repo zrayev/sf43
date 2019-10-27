@@ -29,10 +29,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="company_new", methods={"GET","POST"})
-     * @param Request $request
-     *
-     * @return Response
+     * @Route("/new", name="company_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
@@ -56,9 +53,6 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/{id}", name="company_show", methods={"GET"})
-     * @param Company $company
-     *
-     * @return Response
      */
     public function show(Company $company): Response
     {
@@ -68,11 +62,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="company_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Company $company
-     *
-     * @return Response
+     * @Route("/{id}/edit", name="company_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Company $company): Response
     {
@@ -93,9 +83,6 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/{id}/delete", name="company_delete", methods={"GET"})
-     * @param Company $company
-     *
-     * @return Response
      */
     public function delete(Company $company): Response
     {

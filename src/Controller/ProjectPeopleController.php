@@ -29,10 +29,7 @@ class ProjectPeopleController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="project_people_new", methods={"GET","POST"})
-     * @param Request $request
-     *
-     * @return Response
+     * @Route("/new", name="project_people_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
@@ -56,9 +53,6 @@ class ProjectPeopleController extends AbstractController
 
     /**
      * @Route("/{id}", name="project_people_show", methods={"GET"})
-     * @param ProjectPeople $projectPerson
-     *
-     * @return Response
      */
     public function show(ProjectPeople $projectPerson): Response
     {
@@ -68,11 +62,7 @@ class ProjectPeopleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="project_people_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param ProjectPeople $projectPerson
-     *
-     * @return Response
+     * @Route("/{id}/edit", name="project_people_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, ProjectPeople $projectPerson): Response
     {
@@ -93,9 +83,6 @@ class ProjectPeopleController extends AbstractController
 
     /**
      * @Route("/{id}/delete", name="project_people_delete", methods={"GET"})
-     * @param ProjectPeople $projectPerson
-     *
-     * @return Response
      */
     public function delete(ProjectPeople $projectPerson): Response
     {
