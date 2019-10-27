@@ -14,11 +14,8 @@ class HomeWorkController extends AbstractController
 
     /**
      * @Route("/homework/{page<\d+>}", name="homework")
-     * @param $page
-     *
-     * @return Response
      */
-    public function index($page = self::DEFAULT_PAGE): Response
+    public function index(int $page = self::DEFAULT_PAGE): Response
     {
         $showHomeworkUrl = $this->generateUrl('homework_show', [
             'id' => $page !== self::DEFAULT_PAGE ? $page * self::LIMIT_PER_PAGE + random_int(0, self::LIMIT_PER_PAGE - 1) :
@@ -38,13 +35,7 @@ class HomeWorkController extends AbstractController
      */
     public function show($id): Response
     {
-        $response = new Response();
-        $response->setContent(json_encode([
-            'id' => $id,
-        ]));
-        $response->headers->set('Content-Type', 'application/json');
-
-        return $response;
+        return  $this->json(['id' => $id]);
     }
 
     /**
