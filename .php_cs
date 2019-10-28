@@ -35,9 +35,6 @@ return PhpCsFixer\Config::create()
         'phpdoc_order' => true,
         'phpdoc_separation' => false,
         'phpdoc_to_comment' => false,
-        'phpdoc_add_missing_param_annotation' => [
-            'only_untyped' => false,
-        ],
         'modernize_types_casting' => true,
         'no_php4_constructor' => true,
         'php_unit_construct' => true,

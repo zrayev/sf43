@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Staff{% endblock %}
+
+{% block body %}
+    <h1>Edit Staff</h1>
+
+    {{ include('staff/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('staff_index') }}">back to list</a>
+    <a href="{{ path('staff_delete', {'id': staff.id}) }}">delete</a>
+{% endblock %}

@@ -1,0 +1,46 @@
+App\Entity\Company:
+    company_1:
+        title: Company 1
+    company_2:
+        title: Company 2
+    company_{3..20}:
+        title: <company()>
+
+App\Entity\Department:
+    department_{1..20}:
+        title: <name()>
+        description: <text(256)>
+        teamLead: <name()>
+        company: '@company_<numberBetween(1,20)>'
+
+App\Entity\Skill:
+    skill_{1..20}:
+        title: <jobTitle()>
+
+App\Entity\Staff:
+    staff_1:
+        fullName: 'Dmitry Zraiev'
+        email: 'dmitryzrayev@gmail.com'
+        phone: <phoneNumber()>
+        skills: ['@skill_<numberBetween(1,10)>','@skill_<numberBetween(10, 20)>']
+        comments: <text(512)>
+        departments: '2x @department_*'
+    staff_{2..80}:
+        fullName: <name()>
+        email: <email()>
+        phone: <phoneNumber()>
+        skills: '3x @skill_*'
+        comments: <text(512)>
+        departments: '2x @department_*'
+
+App\Entity\Project:
+    project_{1..10}:
+        title: <name()>
+        description: <text(256)>
+
+App\Entity\ProjectPeople:
+    projectPeople_{1..50}:
+        type: <jobTitle()>
+        responsibility: <text(256)>
+        project: '@project_<numberBetween(1,10)>'
+        person: '@staff_<numberBetween(1,50)>'
