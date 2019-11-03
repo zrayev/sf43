@@ -26,6 +26,13 @@
             {% endblock %}
         </div>
         <div class="col-md-10 second-column">
+            {% block alers %}
+                {% for message in app.flashes('notice') %}
+                    <div class="flash-notice alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endblock %}
             {% block content %}
 
             {% endblock %}
