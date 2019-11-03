@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/two-column.html.twig' %}
 
 {% block title %}Project index{% endblock %}
 
-{% block body %}
-    <h1>Project index</h1>
+{% block content %}
+    <h1>Projects</h1>
+    <h2> Count: {{ projects|length }} </h2>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>№</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>actions</th>
@@ -17,9 +18,9 @@
         <tbody>
         {% for project in projects %}
             <tr>
-                <td>{{ project.id }}</td>
-                <td>{{ project.title }}</td>
-                <td>{{ project.description }}</td>
+                <td>{{ loop.index }}</td>
+                <td>{{ project.title|e }}</td>
+                <td>{{ project.description|e }}</td>
                 <td>
                     <a href="{{ path('project_show', {'id': project.id}) }}">show</a>
                     <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>

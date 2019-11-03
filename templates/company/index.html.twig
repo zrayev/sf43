@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/two-column.html.twig' %}
 
 {% block title %}Company index{% endblock %}
 
-{% block body %}
-    <h1>Company index</h1>
+{% block content %}
+    <h1>Companies</h1>
+    <h2> Count: {{ companies|length }} </h2>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>№</th>
                 <th>Title</th>
                 <th>actions</th>
             </tr>
@@ -16,8 +17,8 @@
         <tbody>
         {% for company in companies %}
             <tr>
-                <td>{{ company.id }}</td>
-                <td>{{ company.title }}</td>
+                <td>{{ loop.index }}</td>
+                <td>{{ company.title|e|upper }}</td>
                 <td>
                     <a href="{{ path('company_show', {'id': company.id}) }}">show</a>
                     <a href="{{ path('company_edit', {'id': company.id}) }}">edit</a>

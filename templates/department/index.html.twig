@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/two-column.html.twig' %}
 
 {% block title %}Department index{% endblock %}
 
-{% block body %}
-    <h1>Department index</h1>
+{% block content %}
+    <h1>Departments</h1>
+    <h2> Count: {{ departments|length }} </h2>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>№</th>
                 <th>Title</th>
                 <th>Description</th>
                 <th>TeamLead</th>
@@ -18,10 +19,10 @@
         <tbody>
         {% for department in departments %}
             <tr>
-                <td>{{ department.id }}</td>
-                <td>{{ department.title }}</td>
-                <td>{{ department.description }}</td>
-                <td>{{ department.teamLead }}</td>
+                <td>{{ loop.index }}</td>
+                <td>{{ department.title|e }}</td>
+                <td>{{ department.description|e }}</td>
+                <td>{{ department.teamLead|e }}</td>
                 <td>
                     <a href="{{ path('department_show', {'id': department.id}) }}">show</a>
                     <a href="{{ path('department_edit', {'id': department.id}) }}">edit</a>

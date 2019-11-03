@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    .active {
+        font-weight: bold;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="row header">
+        <div class="col-xs-12 text-center">
+            {% block header %}
+                <h1>IT Company</h1>
+            {% endblock %}
+        </div>
+    </header>
+    {% block section %}
+    <div class="row">
+        <div class="col-md-2 first-column">
+            {% block menu %}
+                {% include 'layouts/_main-menu.html.twig' %}
+            {% endblock %}
+        </div>
+        <div class="col-md-10 second-column">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+    {% endblock %}
+    <footer class="row">
+        <div class="col-md-12 text-center">
+            &copy; {{ "now"|date('Y') }} IT Company. All rights reserved.
+        </div>
+    </footer>
+</div>
+{% endblock %}

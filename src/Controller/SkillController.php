@@ -82,7 +82,7 @@ class SkillController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name="skill_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="skill_delete", methods={"GET"})
      */
     public function delete(Skill $skill): Response
     {
