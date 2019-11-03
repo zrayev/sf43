@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for staff in staff %}
+        {% for staff in staff|usort_created|reverse %}
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ staff.fullName|e }}</td>
