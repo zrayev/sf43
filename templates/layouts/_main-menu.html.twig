@@ -1,5 +1,7 @@
 {% set route = app.request.attributes.get('_route') %}
 <nav class="nav">
+    <a class="nav-link {{ route ==  'student_index' ? 'active' }}" href="{{ path('student_index') }}">Students</a>
+    <a class="nav-link {{ route ==  'course_index' ? 'active' }}" href="{{ path('course_index') }}">Courses</a>
     <a class="nav-link {{ route ==  'company_index' ? 'active' }}" href="{{ path('company_index') }}">Companies</a>
     <a class="nav-link {{ route ==  'department_index' ? 'active' }}" href="{{ path('department_index') }}">Departments</a>
     <a class="nav-link w-100 {{ route ==  'staff_index' ? 'active' }}" href="{{ path('staff_index') }}">Staff</a>

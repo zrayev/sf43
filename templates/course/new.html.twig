@@ -1,0 +1,11 @@
+{% extends 'layouts/two-column.html.twig' %}
+
+{% block title %}New Course{% endblock %}
+
+{% block content %}
+    <h1>Create new Course</h1>
+
+    {{ include('course/_form.html.twig') }}
+
+    <a href="{{ path('course_index') }}">back to list</a>
+{% endblock %}
