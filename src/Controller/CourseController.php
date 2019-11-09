@@ -29,7 +29,7 @@ class CourseController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="course_new", methods={"GET","POST"})
+     * @Route("/new", name="course_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
@@ -62,7 +62,7 @@ class CourseController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="course_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="course_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Course $course): Response
     {
@@ -92,6 +92,7 @@ class CourseController extends AbstractController
         $this->addFlash(
             'notice', $course->getTitle() . ' deleted!'
         );
+
         return $this->redirectToRoute('course_index');
     }
 }

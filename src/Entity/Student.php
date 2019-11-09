@@ -19,12 +19,12 @@ class Student
     private $id;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *     min=2,
+     *     max=50,
+     *     minMessage="Your first name must be at least {{ limit }} characters long",
+     *     maxMessage="Your first name cannot be longer than {{ limit }} characters"
      * )
      * @Assert\Type(
      *     type="string",
@@ -36,16 +36,16 @@ class Student
     private $firstName;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      * @Assert\Type(
      *     type="string",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your last name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
+     *     min=2,
+     *     max=50,
+     *     minMessage="Your last name must be at least {{ limit }} characters long",
+     *     maxMessage="Your last name cannot be longer than {{ limit }} characters"
      * )
      *
      * @ORM\Column(type="string", length=255)
@@ -53,7 +53,7 @@ class Student
     private $lastName;
 
     /**
-     * @Assert\NotBlank
+     * @Assert\NotBlank()
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="students")
      * @ORM\JoinColumn(onDelete="CASCADE")

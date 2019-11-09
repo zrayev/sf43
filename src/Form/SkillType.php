@@ -13,8 +13,8 @@ class SkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null , [
-                'required'   => true,
+            ->add('title', null, [
+                'required' => true,
                 'help' => 'This unique field.',
             ])
             ->add('save', SubmitType::class, ['label' => 'Save'])

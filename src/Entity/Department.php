@@ -24,8 +24,8 @@ class Department
      * @Assert\NotBlank()
      * @Assert\Type("string")
      * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
+     *     min=2,
+     *     max=50,
      * )
      * @ORM\Column(type="string", length=255)
      */
