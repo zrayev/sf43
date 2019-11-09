@@ -1,3 +1,13 @@
+App\Entity\Course:
+    course_{1..20}:
+        title: <jobTitle()>
+
+App\Entity\Student:
+    student_{1..100}:
+        firstName: <firstName()>
+        lastName: <lastName()>
+        course: '@course_<numberBetween(1,20)>'
+
 App\Entity\Company:
     company_1:
         title: Company 1
