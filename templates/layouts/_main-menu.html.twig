@@ -1,0 +1,9 @@
+{% set route = app.request.attributes.get('_route') %}
+<nav class="nav">
+    <a class="nav-link {{ route ==  'company_index' ? 'active' }}" href="{{ path('company_index') }}">Companies</a>
+    <a class="nav-link {{ route ==  'department_index' ? 'active' }}" href="{{ path('department_index') }}">Departments</a>
+    <a class="nav-link w-100 {{ route ==  'staff_index' ? 'active' }}" href="{{ path('staff_index') }}">Staff</a>
+    <a class="nav-link {{ route ==  'skill_index' ? 'active' }}" href="{{ path('skill_index') }}">Skills</a>
+    <a class="nav-link {{ route ==  'project_index' ? 'active' }}" href="{{ path('project_index') }}">Projects</a>
+    <a class="nav-link {{ route ==  'project_people_index' ? 'active' }}" href="{{ path('project_people_index') }}">Project People</a>
+</nav>
