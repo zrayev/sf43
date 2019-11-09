@@ -1,24 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/two-column.html.twig' %}
 
-{% block title %}ProjectPeople index{% endblock %}
+{% block title %}ProjectPeople{% endblock %}
 
-{% block body %}
-    <h1>ProjectPeople index</h1>
-
+{% block content %}
+    <h1>ProjectPeople</h1>
+    <h2> Count: {{ project_peoples|length }} </h2>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Responsibility</th>
+                <th>№</th>
+                <th>Type</th>
+                <th>Person</th>
+                <th>Project</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for project_person in project_peoples %}
             <tr>
-                <td>{{ project_person.id }}</td>
-                <td>{{ project_person.type }}</td>
-                <td>{{ project_person.responsibility }}</td>
+                <td>{{ loop.index }}</td>
+                <td>{{ project_person.type|e }}</td>
+                <td>{{ project_person.person.fullName|e }}</td>
+                <td>{{ project_person.project.title|e }}</td>
                 <td>
                     <a href="{{ path('project_people_show', {'id': project_person.id}) }}">show</a>
                     <a href="{{ path('project_people_edit', {'id': project_person.id}) }}">edit</a>

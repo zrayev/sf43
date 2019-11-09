@@ -14,6 +14,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
 class Staff
 {
     /**
+     * @var \DateTime
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    public $createdAt;
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -34,13 +40,6 @@ class Staff
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
-
-    /**
-     * @var \DateTime
-     * @Gedmo\Timestampable(on="create")
-     * @ORM\Column(type="datetime")
-     */
-    private $createdAt;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Skill", inversedBy="people")

@@ -41,6 +41,9 @@ class CompanyController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($company);
             $entityManager->flush();
+            $this->addFlash(
+                'notice', $company->getTitle() . ' created!'
+            );
 
             return $this->redirectToRoute('company_index');
         }
@@ -71,6 +74,9 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                'notice', $company->getTitle() . ' edited!'
+            );
 
             return $this->redirectToRoute('company_index');
         }
@@ -89,6 +95,9 @@ class CompanyController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($company);
         $entityManager->flush();
+        $this->addFlash(
+            'notice', $company->getTitle() . ' deleted!'
+        );
 
         return $this->redirectToRoute('company_index');
     }
