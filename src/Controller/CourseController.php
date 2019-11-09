@@ -47,7 +47,7 @@ class CourseController extends AbstractController
 
         return $this->render('course/new.html.twig', [
             'course' => $course,
-            'form' => $form->createView(),
+            'courseForm' => $form->createView(),
         ]);
     }
 
@@ -77,21 +77,21 @@ class CourseController extends AbstractController
 
         return $this->render('course/edit.html.twig', [
             'course' => $course,
-            'form' => $form->createView(),
+            'courseForm' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="course_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="course_delete", methods={"GET"})
      */
-    public function delete(Request $request, Course $course): Response
+    public function delete(Course $course): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$course->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($course);
-            $entityManager->flush();
-        }
-
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($course);
+        $entityManager->flush();
+        $this->addFlash(
+            'notice', $course->getTitle() . ' deleted!'
+        );
         return $this->redirectToRoute('course_index');
     }
 }

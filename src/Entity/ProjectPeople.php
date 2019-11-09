@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -19,31 +20,30 @@ class ProjectPeople
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=256)
      */
     private $type;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=1024)
      */
     private $responsibility;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="people")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $project;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="App\Entity\Staff", inversedBy="projectPeople")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $person;
-
-    public function __construct()
-    {
-        $this->type = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {

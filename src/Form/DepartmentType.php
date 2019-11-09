@@ -7,6 +7,8 @@ use App\Entity\Department;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +18,7 @@ class DepartmentType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
+            ->add('description', TextareaType::class)
             ->add('teamLead')
             ->add('company', EntityType::class, [
                 'class' => Company::class,
@@ -26,6 +28,7 @@ class DepartmentType extends AbstractType
                 },
                 'choice_label' => 'title',
             ])
+            ->add('save', SubmitType::class, ['label' => 'Save'])
         ;
     }
 

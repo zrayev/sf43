@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -27,32 +28,39 @@ class Staff
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
     private $fullName;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Email()
      * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToMany(targetEntity="App\Entity\Skill", inversedBy="people")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $skills;
 
     /**
+     * @Assert\Regex("/^\w+/")
      * @ORM\Column(type="string", length=1024)
      */
     private $comments;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\ManyToMany(targetEntity="App\Entity\Department", inversedBy="people")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */

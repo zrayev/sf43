@@ -8,6 +8,8 @@ use App\Entity\Staff;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -30,7 +32,7 @@ class StaffType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('comments')
+            ->add('comments', TextareaType::class)
             ->add('departments', EntityType::class, [
                 'class' => Department::class,
                 'query_builder' => function (EntityRepository $er) {
@@ -42,6 +44,7 @@ class StaffType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+            ->add('save', SubmitType::class, ['label' => 'Save'])
         ;
     }
 

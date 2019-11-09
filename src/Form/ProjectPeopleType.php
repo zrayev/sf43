@@ -5,9 +5,12 @@ namespace App\Form;
 use App\Entity\Project;
 use App\Entity\ProjectPeople;
 use App\Entity\Staff;
+use Doctrine\DBAL\Types\TextType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +20,7 @@ class ProjectPeopleType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('responsibility')
+            ->add('responsibility', TextareaType::class)
             ->add('project', EntityType::class, [
                 'class' => Project::class,
                 'query_builder' => function (EntityRepository $er) {
@@ -36,6 +39,7 @@ class ProjectPeopleType extends AbstractType
                 'choice_label' => 'fullName',
                 'required' => true,
             ])
+            ->add('save', SubmitType::class, ['label' => 'Save'])
         ;
     }
 

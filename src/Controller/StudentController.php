@@ -82,15 +82,16 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="student_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="student_delete", methods={"GET"})
      */
-    public function delete(Request $request, Student $student): Response
+    public function delete(Student $student): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$student->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($student);
-            $entityManager->flush();
-        }
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($student);
+        $entityManager->flush();
+        $this->addFlash(
+            'notice', implode(' ', [$student->getFirstName(), $student->getLastName()]) . ' deleted!'
+        );
 
         return $this->redirectToRoute('student_index');
     }
