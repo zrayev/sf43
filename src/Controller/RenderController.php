@@ -14,8 +14,9 @@ class RenderController extends AbstractController
     public function index()
     {
         $qrCode = new QrCode('Welcome to Lektorium!');
-        header('Content-Type: '.$qrCode->getContentType());
+        header('Content-Type: ' . $qrCode->getContentType());
 
-        echo $qrCode->writeString(); exit;
+        echo $qrCode->writeString();
+        exit;
     }
 }

@@ -1,0 +1,34 @@
+{% extends 'layouts/two-column.html.twig' %}
+
+{% block title %}Student{% endblock %}
+
+{% block content %}
+    <h1>Student</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ student.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ student.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ student.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td>{{ student.course.title }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('student_index') }}">back to list</a>
+
+    <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
+
+    <a href="{{ path('student_delete', {'id': student.id}) }}">delete</a>
+{% endblock %}

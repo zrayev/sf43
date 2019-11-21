@@ -9,9 +9,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="company")
+ * @ORM\Table(name="course")
  */
-class Company
+class Course
 {
     /**
      * @ORM\Id()
@@ -27,15 +27,13 @@ class Company
     private $title;
 
     /**
-     * @var ArrayCollection
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\Department", mappedBy="company", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="course", cascade={"persist"})
      */
-    private $departments;
+    private $students;
 
     public function __construct()
     {
-        $this->departments = new ArrayCollection();
+        $this->students = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,30 +54,30 @@ class Company
     }
 
     /**
-     * @return Collection|Department[]
+     * @return Collection|Student[]
      */
-    public function getDepartments(): Collection
+    public function getStudents(): Collection
     {
-        return $this->departments;
+        return $this->students;
     }
 
-    public function addDepartment(Department $department): self
+    public function addStudent(Student $student): self
     {
-        if (!$this->departments->contains($department)) {
-            $this->departments[] = $department;
-            $department->setCompany($this);
+        if (!$this->students->contains($student)) {
+            $this->students[] = $student;
+            $student->setCourse($this);
         }
 
         return $this;
     }
 
-    public function removeDepartment(Department $department): self
+    public function removeStudent(Student $student): self
     {
-        if ($this->departments->contains($department)) {
-            $this->departments->removeElement($department);
+        if ($this->students->contains($student)) {
+            $this->students->removeElement($student);
             // set the owning side to null (unless already changed)
-            if ($department->getCompany() === $this) {
-                $department->setCompany(null);
+            if ($student->getCourse() === $this) {
+                $student->setCourse(null);
             }
         }
 

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
@@ -20,23 +21,35 @@ class Department
     private $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Type("string")
+     * @Assert\Length(
+     *     min=2,
+     *     max=50,
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Regex(
+     *     pattern="/<[a-z][\s\S]*>/i",
+     *     match=false,
+     *     message="Your text cannot contain invalid characters."
+     * )
      * @ORM\Column(type="string", length=1024)
      */
     private $description;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
     private $teamLead;
 
     /**
-     * @var Company
-     *
+     * @Assert\NotBlank()
      * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="departments")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
