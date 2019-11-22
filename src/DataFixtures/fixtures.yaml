@@ -54,3 +54,14 @@ App\Entity\ProjectPeople:
         responsibility: <text(256)>
         project: '@project_<numberBetween(1,10)>'
         person: '@staff_<numberBetween(1,50)>'
+
+App\Entity\User:
+    user1:
+        email: 'admin@test.com'
+        roles: ['ROLE_ADMIN']
+        plainPassword: test
+
+    user2:
+        email: 'user@test.com'
+        roles: ['ROLE_USER']
+        plainPassword: 'test'

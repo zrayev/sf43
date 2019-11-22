@@ -112,4 +112,12 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+        if($password) {
+            $this->password = password_hash($password, PASSWORD_DEFAULT);
+        }
+    }
 }
