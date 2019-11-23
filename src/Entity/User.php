@@ -35,6 +35,11 @@ class User implements UserInterface
      */
     private $password;
 
+     /**
+      * @ORM\Column(type="string", unique=true, nullable=true)
+      */
+     private $apiToken;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,5 +124,12 @@ class User implements UserInterface
         if($password) {
             $this->password = password_hash($password, PASSWORD_DEFAULT);
         }
+    }
+
+    public function setApiToken($apiToken): self
+    {
+        $this->apiToken = $apiToken;
+
+        return $this;
     }
 }

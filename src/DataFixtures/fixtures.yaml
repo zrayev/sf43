@@ -59,9 +59,11 @@ App\Entity\User:
     user1:
         email: 'admin@test.com'
         roles: ['ROLE_ADMIN']
-        plainPassword: test
+        plainPassword: 'test'
+        apiToken: 'admin'
 
     user2:
         email: 'user@test.com'
         roles: ['ROLE_USER']
         plainPassword: 'test'
+        apiToken: 'user'
