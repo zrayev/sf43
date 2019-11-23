@@ -61,6 +61,7 @@ class ApiController extends AbstractController
     protected function createApiResponse($data, array $context = [], $statusCode = 200): Response
     {
         $json = $this->serialize($data, $context);
+
         return new Response(
             $json, $statusCode, [
                 'Content-Type' => 'application/json',

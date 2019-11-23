@@ -14,7 +14,7 @@ class CourseVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        if (!in_array($attribute, [self::EDIT, self::DELETE])) {
+        if (!\in_array($attribute, [self::EDIT, self::DELETE], true)) {
             return false;
         }
 
@@ -44,7 +44,6 @@ class CourseVoter extends Voter
 
         throw new \LogicException('This code should not be reached!');
     }
-
 
     private function canEdit(Course $course, User $user)
     {

@@ -37,10 +37,10 @@ class User implements UserInterface
      */
     private $password;
 
-     /**
-      * @ORM\Column(type="string", unique=true, nullable=true)
-      */
-     private $apiToken;
+    /**
+     * @ORM\Column(type="string", unique=true, nullable=true)
+     */
+    private $apiToken;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Course", mappedBy="author")
@@ -133,7 +133,7 @@ class User implements UserInterface
     public function setPlainPassword($password)
     {
         $this->plainPassword = $password;
-        if($password) {
+        if ($password) {
             $this->password = password_hash($password, PASSWORD_DEFAULT);
         }
     }
@@ -148,6 +148,7 @@ class User implements UserInterface
     public function addCourse(Course $course): self
     {
         $this->courses[] = $course;
+
         return $this;
     }
 

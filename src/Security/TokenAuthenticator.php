@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Security;
 
 use App\Entity\User;
@@ -82,7 +81,7 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         $data = [
-            'message' => strtr($exception->getMessageKey(), $exception->getMessageData())
+            'message' => strtr($exception->getMessageKey(), $exception->getMessageData()),
 
             // or to translate this message
             // $this->translator->trans($exception->getMessageKey(), $exception->getMessageData())
@@ -92,13 +91,13 @@ class TokenAuthenticator extends AbstractGuardAuthenticator
     }
 
     /**
-     * Called when authentication is needed, but it's not sent
+     * Called when authentication is needed, but it's not sent.
      */
     public function start(Request $request, AuthenticationException $authException = null)
     {
         $data = [
             // you might translate this message
-            'message' => 'Authentication Required'
+            'message' => 'Authentication Required',
         ];
 
         return new JsonResponse($data, Response::HTTP_UNAUTHORIZED);
