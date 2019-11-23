@@ -35,6 +35,12 @@ class Course
      */
     private $students;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="courses")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $author;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
@@ -85,6 +91,17 @@ class Course
             }
         }
 
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(User $author): self
+    {
+        $this->author = $author;
         return $this;
     }
 }

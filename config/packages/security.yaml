@@ -51,3 +51,6 @@ security:
          - { path: ^/company, roles: ROLE_ADMIN }
          - { path: ^/staff, roles: ROLE_USER }
          - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
+    access_decision_manager:
+        strategy: unanimous
+        allow_if_all_abstain: false

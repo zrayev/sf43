@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -39,6 +41,16 @@ class User implements UserInterface
       * @ORM\Column(type="string", unique=true, nullable=true)
       */
      private $apiToken;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Course", mappedBy="author")
+     */
+    private $courses;
+
+    public function __construct()
+    {
+        $this->courses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -131,5 +143,21 @@ class User implements UserInterface
         $this->apiToken = $apiToken;
 
         return $this;
+    }
+
+    public function addCourse(Course $course): self
+    {
+        $this->courses[] = $course;
+        return $this;
+    }
+
+    public function removeCourse(Course $course): void
+    {
+        $this->courses->removeElement($course);
+    }
+
+    public function getCourses(): Collection
+    {
+        return $this->courses;
     }
 }
