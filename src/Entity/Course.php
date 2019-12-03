@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -17,19 +18,28 @@ class Course
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"course:show", "student:show"})
      */
     private $id;
 
     /**
      * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
+     * @Groups({"course:show", "student:show"})
      */
     private $title;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="course", cascade={"persist"})
+     * @Groups({"course:show"})
      */
     private $students;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="courses")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $author;
 
     public function __construct()
     {
@@ -80,6 +90,18 @@ class Course
                 $student->setCourse(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

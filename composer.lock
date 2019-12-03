@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ae06647c14ca2833e0e3de3dffd441b",
+    "content-hash": "540d6da66ea384f4f21209c60cd5e5bd",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5121,16 +5121,16 @@
         },
         {
             "name": "symfony/security-guard",
-            "version": "v4.3.5",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-guard.git",
-                "reference": "4beec980b6a0122afc1ca166ca50ce3b84398507"
+                "reference": "62cc82a384f2c1c75c58189fcf713032f6fef1e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-guard/zipball/4beec980b6a0122afc1ca166ca50ce3b84398507",
-                "reference": "4beec980b6a0122afc1ca166ca50ce3b84398507",
+                "url": "https://api.github.com/repos/symfony/security-guard/zipball/62cc82a384f2c1c75c58189fcf713032f6fef1e9",
+                "reference": "62cc82a384f2c1c75c58189fcf713032f6fef1e9",
                 "shasum": ""
             },
             "require": {
@@ -5171,7 +5171,7 @@
             ],
             "description": "Symfony Security Component - Guard",
             "homepage": "https://symfony.com",
-            "time": "2019-09-17T11:12:06+00:00"
+            "time": "2019-10-28T17:07:32+00:00"
         },
         {
             "name": "symfony/security-http",

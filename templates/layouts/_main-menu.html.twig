@@ -1,5 +1,5 @@
 {% set route = app.request.attributes.get('_route') %}
-<nav class="nav">
+<nav class="items-nav nav">
     <a class="nav-link {{ route ==  'student_index' ? 'active' }}" href="{{ path('student_index') }}">Students</a>
     <a class="nav-link {{ route ==  'course_index' ? 'active' }}" href="{{ path('course_index') }}">Courses</a>
     <a class="nav-link {{ route ==  'company_index' ? 'active' }}" href="{{ path('company_index') }}">Companies</a>
@@ -8,4 +8,14 @@
     <a class="nav-link {{ route ==  'skill_index' ? 'active' }}" href="{{ path('skill_index') }}">Skills</a>
     <a class="nav-link {{ route ==  'project_index' ? 'active' }}" href="{{ path('project_index') }}">Projects</a>
     <a class="nav-link {{ route ==  'project_people_index' ? 'active' }}" href="{{ path('project_people_index') }}">Project People</a>
+</nav>
+<hr>
+<nav class="user-nav nav">
+      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+          <p>User: {{ app.user.email }}</p>
+          <a href="{{ path('app_logout') }}" class="nav-link">Logout</a>
+      {% else %}
+          <a href="{{ path('app_login') }}" class="nav-link">Login</a>
+          <a href="{{ path('app_register') }}" class="nav-link">Registration</a>
+      {% endif %}
 </nav>

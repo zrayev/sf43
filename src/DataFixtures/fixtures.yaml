@@ -1,6 +1,20 @@
+App\Entity\User:
+    user_1:
+        email: 'admin@test.com'
+        roles: ['ROLE_ADMIN']
+        plainPassword: 'test'
+        apiToken: 'admin'
+
+    user_2:
+        email: 'user@test.com'
+        roles: ['ROLE_USER']
+        plainPassword: 'test'
+        apiToken: 'user'
+
 App\Entity\Course:
     course_{1..20}:
         title: <jobTitle()>
+        author: '@user_<numberBetween(1,2)>'
 
 App\Entity\Student:
     student_{1..100}:

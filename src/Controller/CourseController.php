@@ -66,6 +66,7 @@ class CourseController extends AbstractController
      */
     public function edit(Request $request, Course $course): Response
     {
+        $this->denyAccessUnlessGranted('edit', $course);
         $form = $this->createForm(CourseType::class, $course);
         $form->handleRequest($request);
 
@@ -86,6 +87,7 @@ class CourseController extends AbstractController
      */
     public function delete(Course $course): Response
     {
+        $this->denyAccessUnlessGranted('delete', $course);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($course);
         $entityManager->flush();

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -15,6 +16,7 @@ class Student
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"student:show", "course:show"})
      */
     private $id;
 
@@ -32,6 +34,7 @@ class Student
      * )
      *
      * @ORM\Column(type="string", length=255)
+     * @Groups({"student:show", "course:show"})
      */
     private $firstName;
 
@@ -49,6 +52,7 @@ class Student
      * )
      *
      * @ORM\Column(type="string", length=255)
+     * @Groups({"student:show", "course:show"})
      */
     private $lastName;
 
@@ -57,6 +61,7 @@ class Student
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Course", inversedBy="students")
      * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Groups({"student:show"})
      */
     private $course;
 
