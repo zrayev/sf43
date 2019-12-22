@@ -36,6 +36,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.2",
+        "harmbandstra/swagger-ui-bundle": "^4.2",
         "hautelook/alice-bundle": "^2.5",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
@@ -74,9 +75,11 @@
             "requirements-checker": "script"
         },
         "post-install-cmd": [
+            "HarmBandstra\\SwaggerUiBundle\\Composer\\ScriptHandler::linkAssets",
             "@auto-scripts"
         ],
         "post-update-cmd": [
+            "HarmBandstra\\SwaggerUiBundle\\Composer\\ScriptHandler::linkAssets",
             "@auto-scripts"
         ]
     },

@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+    description: 'test API doc'
+    version: 1.0.0
+    title: TEST API
+components:
+    securitySchemes:
+        authToken:
+            type: apiKey
+            name: X-AUTH-TOKEN
+            in: header
+    schemas:
+
+paths:
+    /api/students/:
+        get:
+            tags:
+                - "students"
+            summary: "show a students list"
+            description: ""
+            operationId: "index"
+            consumes:
+                - "application/json"
+                - "application/xml"
+            produces:
+                - "application/xml"
+                - "application/json"
+            parameters:
+
+            responses:
+                200:
+                    description: "OK"
+            security:
+                - api_key: []
+
+servers:
+    - url: 'http://learn.loc'
+      description: Local server
