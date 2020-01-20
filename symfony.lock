@@ -5,6 +5,15 @@
     "behat/transliterator": {
         "version": "v1.2.0"
     },
+    "dama/doctrine-test-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "56eaa387b5e48ebcc7c95a893b47dfa1ad51449c"
+        }
+    },
     "dasprid/enum": {
         "version": "1.0.0"
     },
@@ -149,6 +158,9 @@
     "khanamiryan/qrcode-detector-decoder": {
         "version": "1.0.2"
     },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.0.1"
+    },
     "monolog/monolog": {
         "version": "1.25.1"
     },
@@ -179,6 +191,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.2.3"
+    },
+    "php": {
+        "version": "7.2"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.0.0"
